@@ -32,5 +32,30 @@ class CollectionValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]");
     }
-    
+
+    @DisplayName("특정 값과 사이즈가 같으면 정상처리")
+    @Test
+    void validateSize() {
+        // given
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+        int size = 6;
+
+        // expect
+        assertThatCode(() -> CollectionValidator.validateSize(numbers, size))
+                .doesNotThrowAnyException();
+
+    }
+
+    @DisplayName("예외: 특정 값과 사이즈가 다를 수 없다.")
+    @Test
+    void validateSize_different_throwsException() {
+        // given
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+        int size = -1;
+
+        // expect
+        assertThatThrownBy(() -> CollectionValidator.validateSize(numbers, size))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]");
+    }
 }

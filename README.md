@@ -38,8 +38,10 @@
 
 - 리스트에 중복이 있는지 검증한다.
     - 중복이 없으면 → 정상 처리
-    - 붕복이 있으면 → IllegalArgumentException
+    - 중복이 있으면 → IllegalArgumentException
 - 리스트 크기가 특정 값인지 검증한다.
+    - 특정값과 리스트 크기가 일치하면 → 정상 처리
+    - 특정값과 리스트 크기가 일치하지 않으면 → IllegalArgumentException
 
 ⭐️ **AmountValidator**
 

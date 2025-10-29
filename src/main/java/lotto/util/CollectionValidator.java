@@ -14,5 +14,11 @@ public class CollectionValidator {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자가 존재합니다.");
         }
     }
-    
+
+    public static void validateSize(final List<Integer> numbers, final int size) {
+        if (numbers.size() != size) {
+            throw new IllegalArgumentException("[ERROR] 크키가 일치하지 않습니다.");
+        }
+    }
+
 }
