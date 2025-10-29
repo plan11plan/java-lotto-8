@@ -33,10 +33,13 @@
     - 각 숫자가 경계값에 있으면 → 정상 처리
     - 각 숫자가 최솟값보다 작으면 → IllegalArgumentException
     - 각 숫자가 최댓값보다 크면 → IllegalArgumentException
-      ⭐️ **CollectionUtils**
 
-- 컬렉션에 중복이 있는지 검증한다.
-- 컬렉션 크키가 특정 값인지 검증한다.
+⭐️ **CollectionValidator**
+
+- 리스트에 중복이 있는지 검증한다.
+    - 중복이 없으면 → 정상 처리
+    - 붕복이 있으면 → IllegalArgumentException
+- 리스트 크기가 특정 값인지 검증한다.
 
 ⭐️ **AmountValidator**
 

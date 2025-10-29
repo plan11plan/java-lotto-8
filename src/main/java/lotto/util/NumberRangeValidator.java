@@ -6,7 +6,7 @@ public class NumberRangeValidator {
     public NumberRangeValidator() {
     }
 
-    public static void validateInRange(int number, int inclusiveMin, int inclusiveMax) {
+    public static void validateInRange(final int number, final int inclusiveMin, final int inclusiveMax) {
         if (number < inclusiveMin) {
             throw new IllegalArgumentException("[ERROR] %d보다 작을 수 없습니다.".formatted(inclusiveMin));
         }
@@ -15,7 +15,7 @@ public class NumberRangeValidator {
         }
     }
 
-    public static void validateInRange(List<Integer> numbers, int inclusiveMin, int inclusiveMax) {
+    public static void validateInRange(final List<Integer> numbers, final int inclusiveMin, final int inclusiveMax) {
         for (Integer number : numbers) {
             if (number < inclusiveMin) {
                 throw new IllegalArgumentException("[ERROR] %d보다 작을 수 없습니다.".formatted(inclusiveMin));
@@ -25,5 +25,5 @@ public class NumberRangeValidator {
             }
         }
     }
-    
+
 }
