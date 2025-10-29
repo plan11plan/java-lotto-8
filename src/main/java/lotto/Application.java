@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.model.PurchaseAmount;
+import lotto.model.WinningNumbers;
 import lotto.view.InputView;
 
 public class Application {
@@ -9,5 +10,8 @@ public class Application {
         InputView inputView = new InputView();
         PurchaseAmount purchaseAmount = inputView.readPurchaseAmount();
         System.out.println(purchaseAmount.money());
+
+        WinningNumbers winningNumbers = inputView.readWinningNumbers();
+        System.out.println(winningNumbers.numbers().toString());
     }
 }
