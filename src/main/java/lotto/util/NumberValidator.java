@@ -26,6 +26,16 @@ public class NumberValidator {
         }
     }
 
+    public static boolean areInRange(final List<Integer> numbers, final int inclusiveMin, final int inclusiveMax) {
+        for (Integer number : numbers) {
+            if (number < inclusiveMin || number > inclusiveMax) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     public static void validateDivisible(final int dividend, final int divisor) {
         if (dividend % divisor != 0) {
             throw new IllegalArgumentException("[ERROR] %d는 %d로 나누어 떨어지지 않는 수 입니다.".formatted(dividend, divisor));

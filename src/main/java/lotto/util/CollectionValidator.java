@@ -21,4 +21,13 @@ public class CollectionValidator {
         }
     }
 
+    public static boolean isDuplicateNumbers(final List<Integer> numbers) {
+        Set<Integer> distinctNumbers = new HashSet<>(numbers);
+        return numbers.size() != distinctNumbers.size();
+    }
+
+    public static boolean hasSize(final List<Integer> numbers, final int size) {
+        return numbers.size() == size;
+    }
+
 }

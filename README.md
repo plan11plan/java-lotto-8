@@ -121,18 +121,19 @@
 
 ⭐️ **Lotto**
 
-- 6개의 번호를 가진다.
-    - 6개 → 정상 처리
-    - 6개가 아니면 → IllegalArgumentException
-- 번호는 중복되지 않는다.
-    - 중복이 없으면 → 정상처리
-    - 중복이면 → IllegalArgumentException
-- 각 번호는 1~45 범위다.
-    - 1~45 → 정상처리
-    - 1 미만 → IllegalArgumentException
-    - 45 초과 → IllegalArgumentException
-- 번호를 오름차순으로 정렬하여 저장한다.
-    - [3,2,1] → [1,2,3]
+- 로또를 생성한다.
+    - 6개의 번호를 가진다.
+        - 6개 → 정상 처리
+        - 6개가 아니면 → IllegalArgumentException
+    - 번호는 중복되지 않는다.
+        - 중복이 없으면 → 정상처리
+        - 중복이면 → IllegalArgumentException
+    - 각 번호는 1~45 범위다.
+        - 1~45 → 정상처리
+        - 1 미만 → IllegalArgumentException
+        - 45 초과 → IllegalArgumentException
+    - 번호를 오름차순으로 정렬하여 저장한다.
+        - [3,2,1,6,5,4] → [1,2,3,4,5,6]
 - 다른 번호 목록과 일치하는 개수를 계산한다.
     - [1,2,3,4,5,6] 과 [4,5,6,7,8,9]가 있으면 → 3 반환
     - [1,2,3,4,5,6] 과 [7,8,9,10,11,12]가 있으면 → 0 반환
