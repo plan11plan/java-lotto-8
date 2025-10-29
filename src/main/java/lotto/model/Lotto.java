@@ -34,6 +34,10 @@ public class Lotto {
         return count;
     }
 
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
+
     public List<Integer> numbers() {
         return numbers;
     }

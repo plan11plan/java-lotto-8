@@ -132,4 +132,31 @@ class LottoTest {
         assertThat(count).isEqualTo(0);
     }
 
+    @DisplayName("특정 번호가 포함되어 있으면 true를 반환한다")
+    @Test
+    void contains_includesNumber_returnsTrue() {
+        // given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int given = 6;
+
+        // when
+        boolean result = lotto.contains(given);
+
+        // then
+        assertThat(result).isTrue();
+    }
+
+    @DisplayName("특정 번호가 포함되어 있지 않으면 false를 반환한다")
+    @Test
+    void contains_notIncludesNumber_returnsFalse() {
+        // given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int given = 7;
+
+        // when
+        boolean result = lotto.contains(given);
+
+        // then
+        assertThat(result).isFalse();
+    }
 }
