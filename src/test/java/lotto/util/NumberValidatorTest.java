@@ -17,7 +17,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class NumberRangeValidatorTest {
+class NumberValidatorTest {
 
 
     @DisplayName("단일 숫자 범위 검증")
@@ -29,7 +29,7 @@ class NumberRangeValidatorTest {
         @ValueSource(ints = {1, 10, 45})
         void validateInRange(int number) {
             // expect
-            assertThatCode(() -> NumberRangeValidator.validateInRange(number, LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER))
+            assertThatCode(() -> NumberValidator.validateInRange(number, LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER))
                     .doesNotThrowAnyException();
         }
 
@@ -38,10 +38,10 @@ class NumberRangeValidatorTest {
         void validateInRange_Boundary() {
             // expect
             assertAll(
-                    () -> assertThatCode(() -> NumberRangeValidator.validateInRange(LOTTO_MIN_NUMBER, LOTTO_MIN_NUMBER,
+                    () -> assertThatCode(() -> NumberValidator.validateInRange(LOTTO_MIN_NUMBER, LOTTO_MIN_NUMBER,
                             LOTTO_MAX_NUMBER))
                             .doesNotThrowAnyException(),
-                    () -> assertThatCode(() -> NumberRangeValidator.validateInRange(LOTTO_MAX_NUMBER, LOTTO_MIN_NUMBER,
+                    () -> assertThatCode(() -> NumberValidator.validateInRange(LOTTO_MAX_NUMBER, LOTTO_MIN_NUMBER,
                             LOTTO_MAX_NUMBER))
                             .doesNotThrowAnyException()
             );
@@ -52,7 +52,7 @@ class NumberRangeValidatorTest {
         @ValueSource(ints = {0, -1})
         void validateInRange_LessThanMin_ThrowsException(int number) {
             // expect
-            assertThatThrownBy(() -> NumberRangeValidator.validateInRange(number, LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER))
+            assertThatThrownBy(() -> NumberValidator.validateInRange(number, LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR]");
         }
@@ -62,7 +62,7 @@ class NumberRangeValidatorTest {
         @ValueSource(ints = {46, 50, 100})
         void validateInRange_BiggerThanMax_ThrowsException(int number) {
             // expect
-            assertThatThrownBy(() -> NumberRangeValidator.validateInRange(number, LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER))
+            assertThatThrownBy(() -> NumberValidator.validateInRange(number, LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR]");
         }
@@ -100,7 +100,7 @@ class NumberRangeValidatorTest {
         @MethodSource("validRangeProvider")
         void validateInRange(List<Integer> numbers) {
             // expect
-            assertThatCode(() -> NumberRangeValidator.validateInRange(numbers, LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER))
+            assertThatCode(() -> NumberValidator.validateInRange(numbers, LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER))
                     .doesNotThrowAnyException();
         }
 
@@ -110,10 +110,10 @@ class NumberRangeValidatorTest {
         void validateInRange_Boundary(List<Integer> numbers) {
             // expect
             assertAll(
-                    () -> assertThatCode(() -> NumberRangeValidator.validateInRange(numbers, LOTTO_MIN_NUMBER,
+                    () -> assertThatCode(() -> NumberValidator.validateInRange(numbers, LOTTO_MIN_NUMBER,
                             LOTTO_MAX_NUMBER))
                             .doesNotThrowAnyException(),
-                    () -> assertThatCode(() -> NumberRangeValidator.validateInRange(numbers, LOTTO_MIN_NUMBER,
+                    () -> assertThatCode(() -> NumberValidator.validateInRange(numbers, LOTTO_MIN_NUMBER,
                             LOTTO_MAX_NUMBER))
                             .doesNotThrowAnyException()
             );
@@ -124,7 +124,7 @@ class NumberRangeValidatorTest {
         @MethodSource("lessThanMinRangeProvider")
         void validateInRange_LessThanMin_ThrowsException(List<Integer> numbers) {
             // expect
-            assertThatThrownBy(() -> NumberRangeValidator.validateInRange(numbers, LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER))
+            assertThatThrownBy(() -> NumberValidator.validateInRange(numbers, LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR]");
         }
@@ -134,7 +134,37 @@ class NumberRangeValidatorTest {
         @MethodSource("biggerThanMaxRangeProvider")
         void validateInRange_BiggerThanMax_ThrowsException(List<Integer> numbers) {
             // expect
-            assertThatThrownBy(() -> NumberRangeValidator.validateInRange(numbers, LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER))
+            assertThatThrownBy(() -> NumberValidator.validateInRange(numbers, LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR]");
+        }
+    }
+
+    @DisplayName("특정 단위로 나누어 떨어지는지 검증")
+    @Nested
+    class 특정_단위로_나누어_떨어지는지_검증 {
+        @DisplayName("특정 단위로 나누어 떨어지면 정상 처리")
+        @Test
+        void validateDivisible() {
+            // given
+            int dividend = 10_000;
+            int divisor = 1_000;
+
+            // expect
+            assertThatCode(() -> NumberValidator.validateDivisible(dividend, divisor))
+                    .doesNotThrowAnyException();
+
+        }
+
+        @DisplayName("예외: 특정 단위로 나누어 떨어지지 않는다.")
+        @Test
+        void validateDivisible_cant_divide_throwsException() {
+            // given
+            int dividend = 10_000;
+            int divisor = 1_001;
+
+            // expect
+            assertThatThrownBy(() -> NumberValidator.validateDivisible(dividend, divisor))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR]");
         }

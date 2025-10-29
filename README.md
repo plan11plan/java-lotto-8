@@ -23,16 +23,19 @@
 
 ⭐️ **NumberRangeValidator**
 
-- 단일 번호가 특정 범위 내인지 검증한다.
+- 단일 숫자가 특정 범위 내인지 검증한다.
     - 숫자가 범위 안에 있으면 → 정상 처리
     - 숫자가 경계값에 있으면 → 정상 처리
     - 숫자가 최솟값보다 작으면 → IllegalArgumentException
     - 숫자가 최댓값보다 크면 → IllegalArgumentException
-- 번호 리스트가 모두 특정 범위 내인지 검증한다.
+- 숫자 리스트가 모두 특정 범위 내인지 검증한다.
     - 각 숫자가 범위 안에 있으면 → 정상 처리
     - 각 숫자가 경계값에 있으면 → 정상 처리
     - 각 숫자가 최솟값보다 작으면 → IllegalArgumentException
     - 각 숫자가 최댓값보다 크면 → IllegalArgumentException
+- 특정 숫자가 특정 단위로 나누어 떨어지는지 검증한다.
+    - 특정 단위로 나누어 떨어지면 → 정상 처리
+    - 예외: 특정 단위로 나누어 떨어지지 않으면 → IllegalArgumentException
 
 ⭐️ **CollectionValidator**
 
@@ -42,16 +45,6 @@
 - 리스트 크기가 특정 값인지 검증한다.
     - 특정값과 리스트 크기가 일치하면 → 정상 처리
     - 특정값과 리스트 크기가 일치하지 않으면 → IllegalArgumentException
-
-⭐️ **AmountValidator**
-
-- 금액이 특정 단위로 나누어 떨어지는지 검증한다.
-- 금액이 특정 범위 내인지 검증한다.
-
-⭐️ **StringParser**
-
-- 문자열을 정수로 변환한다.
-- 구분자로 구분된 문자열을 숫자 리스트로 변환한다.
 
 ## 📌 입력
 

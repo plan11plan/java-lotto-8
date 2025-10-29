@@ -2,8 +2,8 @@ package lotto.util;
 
 import java.util.List;
 
-public class NumberRangeValidator {
-    public NumberRangeValidator() {
+public class NumberValidator {
+    public NumberValidator() {
     }
 
     public static void validateInRange(final int number, final int inclusiveMin, final int inclusiveMax) {
@@ -23,6 +23,12 @@ public class NumberRangeValidator {
             if (number > inclusiveMax) {
                 throw new IllegalArgumentException("[ERROR] %d보다 클 수 없습니다.".formatted(inclusiveMax));
             }
+        }
+    }
+
+    public static void validateDivisible(final int dividend, final int divisor) {
+        if (dividend % divisor != 0) {
+            throw new IllegalArgumentException("[ERROR] %d는 %d로 나누어 떨어지지 않는 수 입니다.".formatted(dividend, divisor));
         }
     }
 
