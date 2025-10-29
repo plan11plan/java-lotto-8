@@ -49,6 +49,11 @@
 ⭐️ **StringParser**
 
 - 문자열을 정수로 변환한다.
+    - 정수 문자열이면 → 정상 처리
+    - 예외: 숫자 형식이 아닌 문자열이면 → IllegalArgumentException
+    - 예외: 빈 문자열이면 → IllegalArgumentException
+    - 예외: 공백만 있는 문자열이면 → IllegalArgumentException
+
 - 구분자로 구분된 문자열을 숫자 리스트로 변환한다.
 
 ## 📌 입력

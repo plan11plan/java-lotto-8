@@ -3,7 +3,7 @@ package lotto.util;
 import java.util.List;
 
 public class NumberValidator {
-    public NumberValidator() {
+    private NumberValidator() {
     }
 
     public static void validateInRange(final int number, final int inclusiveMin, final int inclusiveMax) {
