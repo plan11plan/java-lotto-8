@@ -87,25 +87,29 @@
 
 ⭐️ **PurchaseAmount**
 
-- 구입 금액의 불변 객체를 생성한다.
-    - 1,000원 단위로 구매할 수 있다.
-        - 1,000으로 나누어떨어지면 → 정상 처리
-        - 1,000으로 나누어떨어지지 않으면 → IllegalArgumentException
-    - 최소 1,000원 이상 최대 100,000원 이하여야 한다.
-        - 1,000원 ~ 100,000원 → 정상 처리
-        - 1,000원 미만 → IllegalArgumentException
-        - 100,000원 초과 → IllegalArgumentException
+- 1,000원 단위로 구매할 수 있다.
+    - 1,000으로 나누어떨어지면 → 정상 처리
+    - 1,000으로 나누어떨어지지 않으면 → IllegalArgumentException
+- 최소 1,000원 이상 최대 100,000원 이하여야 한다.
+    - 1,000원 ~ 100,000원 → 정상 처리
+    - 1,000원 미만 → IllegalArgumentException
+    - 100,000원 초과 → IllegalArgumentException
 
 ⭐️ **WinningNumbers**
 
-- 로또 당첨 번호의 불변 객체를 생성한다.
-    - 크기가 6개인지 검증
-    - 중복이 없는지 검증
-    - 각 번호가 1~45 범위인지 검증
+- 당첨 번호의 크기가 6개인지 검증한다.
+    - 6개면 → 정상 처리
+    - 6개가 아니면 → IllegalArgumentException
+- 당첨 번호에 중복이 없는지 검증한다.
+    - 중복이 없으면 → 정상 처리
+    - 중복이 있으면 → IllegalArgumentException
+- 각 당첨 번호가 1~45 범위 내인지 검증한다.
+    - 모든 번호가 1~45 범위 안에 있으면 → 정상 처리
+    - 경계값(1, 45)에 있으면 → 정상 처리
+    - 1 미만의 번호가 있으면 → IllegalArgumentException
+    - 45 초과의 번호가 있으면 → IllegalArgumentException
 
 ⭐️ **BonusNumber**
-
-보너스 번호의 붋변 객체를 생성한다.
 
 - 번호는 1~45 범위다.
     - 1~45 → 정상 처리
