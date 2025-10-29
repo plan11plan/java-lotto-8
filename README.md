@@ -66,41 +66,54 @@
 
 > 제약 사항: 예외 발생 시 에러 메세지를 출력하고 재시도한다.
 
+⭐️ **InputView**
+
+- 구매 금액 입력을 받는다.
+    - 입력값이 비어있으면 → IllegalArgumentException
+    - 문자열을 정수로 변환한다.
+    - PurchaseAmount 객체를 생성한다.
+
+- 당첨 번호 입력을 받는다.
+    - 입력값 빈값 검증한다.
+    - 쉼표로 구분하여 파싱한다.
+    - WinningNumbers 객체를 생성한다.
+
+- 보너스 번호 입력을 받는다.
+    - 입력값이 비어있으면 → IllegalArgumentException
+    - 문자열을 정수로 변환한다.
+    - BonusNumber 객체를 생성한다.
+
+## 📌 도메인
 
 ⭐️ **PurchaseAmount**
 
-- 1,000원 단위다.
-    - 1000으로 나누어 떨어지면 → 정상 처리
-    - 1000으로 나누어 떨어지지 않으면 → IllegalArgumentException
-- 최소 1,000원 ~ 최대 100,000원이다.
-    - 1,000원 ~ 100,000원 → 정상 처리
-    - 1000원 미만 → IllegalArgumentException
-    - 100,000원 초과 →IllegalArgumentException
+- 구입 금액의 불변 객체를 생성한다.
+    - 1,000원 단위로 구매할 수 있다.
+        - 1,000으로 나누어떨어지면 → 정상 처리
+        - 1,000으로 나누어떨어지지 않으면 → IllegalArgumentException
+    - 최소 1,000원 이상 최대 100,000원 이하여야 한다.
+        - 1,000원 ~ 100,000원 → 정상 처리
+        - 1,000원 미만 → IllegalArgumentException
+        - 100,000원 초과 → IllegalArgumentException
 
 ⭐️ **WinningNumbers**
 
-- 번호는 쉼표(,)를 기준으로 구분한다.
-    - 쉼표로 구분된 문자열을 숫자 리스트로 반환한다.
-- 서로 중복되지 않은 6개의 번호를 입력받는다.
-    - 6개면 정상처리
-    - 6개가 아니면 → IllegalArgumentException
-- 각 번호는 최소 1 ~ 최대 45까지다.
-    - 1~45 → 정상 처리
-    - 1미만 → IllegalArgumentException
-    - 45초과 → IllegalArgumentException
-- 번호는 쉼표(,)를 기준으로 구분한다.
+- 로또 당첨 번호의 불변 객체를 생성한다.
+    - 크기가 6개인지 검증
+    - 중복이 없는지 검증
+    - 각 번호가 1~45 범위인지 검증
 
 ⭐️ **BonusNumber**
 
-- 당첨 번호와 중복되지 않은 번호여야 한다.
-    - 담첨번호에 포함되지 않으면 → 정상처리
-    - 당첨번호와 중복 → IllegalArgumentException
-- 보너스 번호는 최소 1 ~ 최대 45까지다.
-    - 1~45 → 정상처리
+보너스 번호의 붋변 객체를 생성한다.
+
+- 번호는 1~45 범위다.
+    - 1~45 → 정상 처리
     - 1 미만 → IllegalArgumentException
     - 45 초과 → IllegalArgumentException
-
-## 📌 도메인
+    - 당첨 번호와 중복되지 않아야 한다.
+        - 당첨 번호에 포함되지 않으면 → 정상 처리
+        - 당첨 번호와 중복되면 → IllegalArgumentException
 
 ⭐️ **Lotto**
 
