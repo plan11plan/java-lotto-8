@@ -29,8 +29,11 @@
     - 숫자가 최솟값보다 작으면 → IllegalArgumentException
     - 숫자가 최댓값보다 크면 → IllegalArgumentException
 - 번호 리스트가 모두 특정 범위 내인지 검증한다.
-
-⭐️ **CollectionUtils**
+    - 각 숫자가 범위 안에 있으면 → 정상 처리
+    - 각 숫자가 경계값에 있으면 → 정상 처리
+    - 각 숫자가 최솟값보다 작으면 → IllegalArgumentException
+    - 각 숫자가 최댓값보다 크면 → IllegalArgumentException
+      ⭐️ **CollectionUtils**
 
 - 컬렉션에 중복이 있는지 검증한다.
 - 컬렉션 크키가 특정 값인지 검증한다.
