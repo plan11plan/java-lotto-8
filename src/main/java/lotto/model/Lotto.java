@@ -3,6 +3,10 @@ package lotto.model;
 import static lotto.Constants.LOTTO_MAX_NUMBER;
 import static lotto.Constants.LOTTO_MIN_NUMBER;
 import static lotto.Constants.LOTTO_NUMBERS_SIZE;
+import static lotto.model.LottoErrorType.DUPLICATE;
+import static lotto.model.LottoErrorType.INVALID_RANGE;
+import static lotto.model.LottoErrorType.INVALID_SIZE;
+import static lotto.model.LottoErrorType.NULL;
 
 import java.util.List;
 import java.util.Objects;
@@ -22,26 +26,25 @@ public class Lotto {
 
     private void validateNotNull(List<Integer> numbers) {
         if (Objects.isNull(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호가 비어있습니다.");
+            throw new IllegalArgumentException(NULL.getMessage());
         }
     }
 
     private void validateSize(List<Integer> numbers) {
         if (CollectionValidator.hasSize(numbers, LOTTO_NUMBERS_SIZE)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 %d개여야 합니다.".formatted(LOTTO_NUMBERS_SIZE));
+            throw new IllegalArgumentException(INVALID_SIZE.getMessage(LOTTO_NUMBERS_SIZE));
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) {
         if (CollectionValidator.isDuplicateNumbers(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 서로 중복 될 수 없습니다.");
+            throw new IllegalArgumentException(DUPLICATE.getMessage());
         }
     }
 
     private void validateRange(List<Integer> numbers) {
         if (!NumberValidator.areInRange(numbers, LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER)) {
-            throw new IllegalArgumentException(
-                    "[ERROR] 로또번호는 %d ~ %d값까지 유효합니다.".formatted(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER));
+            throw new IllegalArgumentException(INVALID_RANGE.getMessage(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER));
         }
     }
 
