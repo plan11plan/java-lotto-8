@@ -104,4 +104,32 @@ class LottoTest {
         assertThat(lotto.numbers()).containsExactly(1, 2, 3, 4, 5, 6);
     }
 
+    @DisplayName("다른 번호 목록과 일치하는 개수를 계산한다. 3개 일치")
+    @Test
+    void matchCount_threeMatches() {
+        // given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> otherNumbers = List.of(4, 5, 6, 7, 8, 9);
+
+        // when
+        int count = lotto.matchCount(otherNumbers);
+
+        // then
+        assertThat(count).isEqualTo(3);
+    }
+
+    @DisplayName("다른 번호 목록과 일치하는 개수를 계산한다. 일치 없음")
+    @Test
+    void matchCount_noMatches() {
+        // given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> otherNumbers = List.of(7, 8, 9, 10, 11, 12);
+
+        // when
+        int count = lotto.matchCount(otherNumbers);
+
+        // then
+        assertThat(count).isEqualTo(0);
+    }
+
 }

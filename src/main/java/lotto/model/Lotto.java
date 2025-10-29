@@ -24,6 +24,20 @@ public class Lotto {
         this.numbers = sortNumbers(numbers);
     }
 
+    public int matchCount(final List<Integer> numbers) {
+        int count = 0;
+        for (int number : this.numbers) {
+            if (numbers.contains(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public List<Integer> numbers() {
+        return numbers;
+    }
+
     private void validateNotNull(List<Integer> numbers) {
         if (Objects.isNull(numbers)) {
             throw new IllegalArgumentException(NULL.getMessage());
@@ -31,7 +45,7 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (CollectionValidator.hasSize(numbers, LOTTO_NUMBERS_SIZE)) {
+        if (!CollectionValidator.hasSize(numbers, LOTTO_NUMBERS_SIZE)) {
             throw new IllegalArgumentException(INVALID_SIZE.getMessage(LOTTO_NUMBERS_SIZE));
         }
     }
@@ -54,7 +68,4 @@ public class Lotto {
                 .toList();
     }
 
-    public List<Integer> numbers() {
-        return numbers;
-    }
 }
