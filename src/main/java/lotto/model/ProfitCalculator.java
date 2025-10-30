@@ -35,6 +35,10 @@ public class ProfitCalculator {
         return (double) totalPrize / purchaseAmount * 100;
     }
 
+    public double roundToFirstDecimal(double profitRate) {
+        return Math.round(profitRate * 10) / 10.0;
+    }
+
     private Map<LotteryRank, Integer> initializeRankCounts() {
         Map<LotteryRank, Integer> rankCounts = new HashMap<>();
         for (LotteryRank rank : LotteryRank.values()) {

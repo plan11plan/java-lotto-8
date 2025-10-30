@@ -102,4 +102,30 @@ class ProfitCalculatorTest {
         assertThat(profitRate).isEqualTo(150.0);
     }
 
+    @DisplayName("62.44를 소수점 둘째 자리에서 반올림 -> 62.4")
+    @Test
+    void roundToFirstDecimal_roundDown() {
+        // given
+        double given = 62.44;
+
+        // when
+        double rounded = calculator.roundToFirstDecimal(given);
+
+        // then
+        assertThat(rounded).isEqualTo(62.4);
+    }
+
+    @DisplayName("62.46을 소수점 둘째 자리에서 반올림 ->  62.5")
+    @Test
+    void roundToFirstDecimal_62_46() {
+        // given
+        double given = 62.46;
+
+        // when
+        double rounded = calculator.roundToFirstDecimal(given);
+
+        // then
+        assertThat(rounded).isEqualTo(62.5);
+    }
+
 }
