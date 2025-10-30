@@ -20,6 +20,16 @@ public class ProfitCalculator {
         return rankCounts;
     }
 
+    public int calculateTotalPrize(Map<LotteryRank, Integer> rankCounts) {
+        int totalPrize = 0;
+        for (Map.Entry<LotteryRank, Integer> entry : rankCounts.entrySet()) {
+            LotteryRank rank = entry.getKey();
+            int count = entry.getValue();
+            totalPrize += rank.getPrizeMoney() * count;
+        }
+        return totalPrize;
+    }
+
     private Map<LotteryRank, Integer> initializeRankCounts() {
         Map<LotteryRank, Integer> rankCounts = new HashMap<>();
         for (LotteryRank rank : LotteryRank.values()) {

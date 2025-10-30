@@ -36,4 +36,42 @@ class ProfitCalculatorTest {
         assertThat(rankCounts.get(LotteryRank.FIFTH)).isEqualTo(2);
     }
 
+    @DisplayName("5등 2개 + 4등 1개의 총 당첨금은 60,000원이다")
+    @Test
+    void calculateTotalPrize_combined() {
+        // given
+        Map<LotteryRank, Integer> rankCounts = Map.of(
+                LotteryRank.FIRST, 0,
+                LotteryRank.SECOND, 0,
+                LotteryRank.THIRD, 0,
+                LotteryRank.FOURTH, 1,
+                LotteryRank.FIFTH, 2
+        );
+
+        // when
+        int totalPrize = calculator.calculateTotalPrize(rankCounts);
+
+        // then
+        assertThat(totalPrize).isEqualTo(60_000);
+    }
+
+    @DisplayName("당첨금이 없으면 0원이다")
+    @Test
+    void calculateTotalPrize_noPrize() {
+        // given
+        Map<LotteryRank, Integer> rankCounts = Map.of(
+                LotteryRank.FIRST, 0,
+                LotteryRank.SECOND, 0,
+                LotteryRank.THIRD, 0,
+                LotteryRank.FOURTH, 0,
+                LotteryRank.FIFTH, 0
+        );
+
+        // when
+        int totalPrize = calculator.calculateTotalPrize(rankCounts);
+
+        // then
+        assertThat(totalPrize).isEqualTo(0);
+    }
+
 }
