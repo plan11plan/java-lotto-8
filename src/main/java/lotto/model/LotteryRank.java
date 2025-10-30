@@ -18,4 +18,16 @@ public enum LotteryRank {
         this.bonusNumber = bonusNumber;
         this.prizeMoney = prizeMoney;
     }
+
+    public int getMatchedCount() {
+        return matchedCount;
+    }
+
+    public boolean isBonusNumber() {
+        return bonusNumber;
+    }
+
+    public int getPrizeMoney() {
+        return prizeMoney;
+    }
 }
