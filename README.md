@@ -147,10 +147,10 @@
     - 생선된 리스트의 크기는 6이다.
     - 생성된 리스트에 중복이 없으면 → 정상처리
     - 중복 → IllegalArgumentException
-- 각 번호는 1~45 범위다.
-    - 1~45 → 정상처리
-    - 1 미만 → IllegalArgumentException
-    - 45 초과 → IllegalArgumentException
+    - 각 번호는 1~45 범위다.
+        - 1~45 → 정상처리
+        - 1 미만 → IllegalArgumentException
+        - 45 초과 → IllegalArgumentException
 
 ⭐️ **WinningLotto**
 
