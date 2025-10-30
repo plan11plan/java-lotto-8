@@ -5,19 +5,22 @@ import java.util.List;
 import java.util.Set;
 
 public class CollectionValidator {
+    private static final String ERROR_DUPLICATE_NUMBERS = "[ERROR] 중복된 숫자가 존재합니다.";
+    private static final String ERROR_SIZE_MISMATCH = "[ERROR] 크기가 일치하지 않습니다.";
+
     private CollectionValidator() {
     }
 
     public static void validateDuplicateNumbers(final List<Integer> numbers) {
         Set<Integer> distinctNumbers = new HashSet<>(numbers);
         if (numbers.size() != distinctNumbers.size()) {
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 존재합니다.");
+            throw new IllegalArgumentException(ERROR_DUPLICATE_NUMBERS);
         }
     }
 
     public static void validateSize(final List<Integer> numbers, final int size) {
         if (numbers.size() != size) {
-            throw new IllegalArgumentException("[ERROR] 크키가 일치하지 않습니다.");
+            throw new IllegalArgumentException(ERROR_SIZE_MISMATCH);
         }
     }
 

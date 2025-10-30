@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class StringParser {
+    private static final String ERROR_INVALID_NUMBER_FORMAT = "[ERROR] 숫자 형식이 아닙니다.";
+
     private StringParser() {
     }
 
@@ -11,7 +13,7 @@ public class StringParser {
         try {
             return Integer.parseInt(string.trim());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자 형식이 아닙니다.");
+            throw new IllegalArgumentException(ERROR_INVALID_NUMBER_FORMAT);
         }
     }
 
