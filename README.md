@@ -154,10 +154,7 @@
 
 ⭐️ **WinningLotto**
 
-- 당첨 번호 6개와 보너스 번호 1개를 가진다.
-- 보너스 번호는 당첨 번호와 중복되지 않는다.
-    - 당첨 번호 [1, 2, 3, 4, 5, 6]에 보너스 번호 7 → 정상 처리
-    - 당첨 번호 [1, 2, 3, 4, 5, 6]에 보너스 번호 3 → IllegalArgumentException
+- WinningNumbers와 BonusNumber를 받아 당첨 정보를 생성한다.
 - 당첨 번호와 보너스 번호를 제공한다.
 
 ⭐️ **LotteryMachine**
