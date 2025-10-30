@@ -6,7 +6,12 @@ import java.util.Map;
 
 
 public class ProfitCalculator {
-    LotteryRankingAlgorithm rankingAlgorithm = new LotteryRankingAlgorithm();
+
+    private final LotteryRankingAlgorithm rankingAlgorithm;
+
+    public ProfitCalculator(LotteryRankingAlgorithm rankingAlgorithm) {
+        this.rankingAlgorithm = rankingAlgorithm;
+    }
 
     public Map<LotteryRank, Integer> calculateRankCounts(List<Lotto> lottos, WinningLotto winningLotto) {
         Map<LotteryRank, Integer> rankCounts = initializeRankCounts();
