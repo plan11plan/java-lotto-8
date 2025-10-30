@@ -17,6 +17,7 @@ public class ProfitCalculator {
                 rankCounts.put(rank, rankCounts.get(rank) + 1);
             }
         }
+
         return rankCounts;
     }
 
@@ -28,6 +29,10 @@ public class ProfitCalculator {
             totalPrize += rank.getPrizeMoney() * count;
         }
         return totalPrize;
+    }
+
+    public double calculateProfitRate(int purchaseAmount, int totalPrize) {
+        return (double) totalPrize / purchaseAmount * 100;
     }
 
     private Map<LotteryRank, Integer> initializeRankCounts() {

@@ -74,4 +74,32 @@ class ProfitCalculatorTest {
         assertThat(totalPrize).isEqualTo(0);
     }
 
+    @DisplayName("구입금액 10,000원, 당첨금 5,000원 -> 수익률 50.0")
+    @Test
+    void calculateProfitRate_50percent() {
+        // given
+        int purchaseAmount = 10_000;
+        int totalPrize = 5_000;
+
+        // when
+        double profitRate = calculator.calculateProfitRate(purchaseAmount, totalPrize);
+
+        // then
+        assertThat(profitRate).isEqualTo(50.0);
+    }
+
+    @DisplayName("구입금액 10,000원, 당첨금 15,000원 -> 수익률 150.0")
+    @Test
+    void calculateProfitRate_150percent() {
+        // given
+        int purchaseAmount = 10_000;
+        int totalPrize = 15_000;
+
+        // when
+        double profitRate = calculator.calculateProfitRate(purchaseAmount, totalPrize);
+
+        // then
+        assertThat(profitRate).isEqualTo(150.0);
+    }
+
 }
