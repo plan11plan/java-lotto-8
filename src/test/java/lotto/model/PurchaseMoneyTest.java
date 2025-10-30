@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class PurchaseAmountTest {
+class PurchaseMoneyTest {
     private final static int VALID_PURCHASE_AMOUNT = Constants.PURCHASE_MIN_MONEY;
     private final static int UNVALID_PURCHASE_AMOUNT_LESS_THAN_MIN = Constants.PURCHASE_MIN_MONEY - 1;
     private final static int UNVALID_PURCHASE_AMOUNT_BIGGER_THAN_MAX = Constants.PURCHASE_MAX_MONEY + 1;
@@ -18,7 +18,7 @@ class PurchaseAmountTest {
         int given = VALID_PURCHASE_AMOUNT;
 
         // expect
-        Assertions.assertThatCode(() -> new PurchaseAmount(given))
+        Assertions.assertThatCode(() -> new PurchaseMoney(given))
                 .doesNotThrowAnyException();
     }
 
@@ -29,7 +29,7 @@ class PurchaseAmountTest {
         int given = UNVALID_PURCHASE_AMOUNT_BIGGER_THAN_MAX;
 
         // expect
-        Assertions.assertThatThrownBy(() -> new PurchaseAmount(given))
+        Assertions.assertThatThrownBy(() -> new PurchaseMoney(given))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]");
     }
@@ -41,7 +41,7 @@ class PurchaseAmountTest {
         int given = VALID_PURCHASE_AMOUNT;
 
         // expect
-        Assertions.assertThatCode(() -> new PurchaseAmount(given))
+        Assertions.assertThatCode(() -> new PurchaseMoney(given))
                 .doesNotThrowAnyException();
     }
 
@@ -52,7 +52,7 @@ class PurchaseAmountTest {
         int given = UNVALID_PURCHASE_AMOUNT_LESS_THAN_MIN;
 
         // expect
-        Assertions.assertThatThrownBy(() -> new PurchaseAmount(given))
+        Assertions.assertThatThrownBy(() -> new PurchaseMoney(given))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]");
     }
@@ -64,7 +64,7 @@ class PurchaseAmountTest {
         int given = UNVALID_PURCHASE_AMOUNT_BIGGER_THAN_MAX;
 
         // expect
-        Assertions.assertThatThrownBy(() -> new PurchaseAmount(given))
+        Assertions.assertThatThrownBy(() -> new PurchaseMoney(given))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]");
     }

@@ -3,7 +3,7 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import lotto.model.BonusNumber;
-import lotto.model.PurchaseAmount;
+import lotto.model.PurchaseMoney;
 import lotto.model.WinningNumbers;
 import lotto.util.StringParser;
 
@@ -24,7 +24,7 @@ public class InputView {
     private static final String DELIMITER_COMMA = ",";
 
 
-    public PurchaseAmount readPurchaseAmount() {
+    public PurchaseMoney readPurchaseAmount() {
         System.out.println(PURCHASE_AMOUNT_PROMPT);
         while (true) {
             try {
@@ -38,12 +38,12 @@ public class InputView {
         }
     }
 
-    private PurchaseAmount createPurchaseAmount(String input) throws IllegalArgumentException {
+    private PurchaseMoney createPurchaseAmount(String input) throws IllegalArgumentException {
         if (input.isEmpty()) {
             throw new IllegalArgumentException(ERR_PURCHASE_AMOUNT_EMPTY);
         }
         int purchaseAmount = StringParser.parseInt(input);
-        return new PurchaseAmount(purchaseAmount);
+        return new PurchaseMoney(purchaseAmount);
     }
 
     public WinningNumbers readWinningNumbers() {
