@@ -9,17 +9,19 @@ public class LotteryRankingAlgorithm {
 
         if (matchedCount == 6) {
             return LotteryRank.FIRST;
-        } else if (matchedCount == 5 && bonusNumber) {
-            return LotteryRank.SECOND;
-        } else if (matchedCount == 5 && !bonusNumber) {
-            return LotteryRank.THIRD;
-        } else if (matchedCount == 4) {
-            return LotteryRank.FOURTH;
-        } else if (matchedCount == 3) {
-            return LotteryRank.FIFTH;
-        } else {
-            return LotteryRank.NONE;
         }
-
+        if (matchedCount == 5 && bonusNumber) {
+            return LotteryRank.SECOND;
+        }
+        if (matchedCount == 5 && !bonusNumber) {
+            return LotteryRank.THIRD;
+        }
+        if (matchedCount == 4) {
+            return LotteryRank.FOURTH;
+        }
+        if (matchedCount == 3) {
+            return LotteryRank.FIFTH;
+        }
+        return LotteryRank.NONE;
     }
 }
