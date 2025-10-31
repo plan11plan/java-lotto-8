@@ -4,7 +4,8 @@ public enum LottoErrorType {
     NULL("[ERROR] 로또 번호가 비어있습니다."),
     INVALID_SIZE("[ERROR] 로또 번호는 %d개여야 합니다."),
     DUPLICATE("[ERROR] 로또 번호는 서로 중복될 수 없습니다."),
-    INVALID_RANGE("[ERROR] 로또 번호는 %d~%d 범위여야 합니다.");
+    INVALID_RANGE("[ERROR] 로또 번호는 %d~%d 범위여야 합니다."),
+    DUPLICATE_WITH_WINNING_NUMBER("[ERROR] 당첨번호와 중복된 보너스번호 입니다.");
 
     private final String message;
 

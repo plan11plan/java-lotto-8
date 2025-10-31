@@ -1,9 +1,12 @@
 package lotto.model;
 
+import static lotto.model.LottoErrorType.DUPLICATE_WITH_WINNING_NUMBER;
+
 import lotto.Constants;
 import lotto.util.NumberValidator;
 
 public class BonusNumber {
+
     private final int number;
 
     private BonusNumber(int number) {
@@ -14,7 +17,7 @@ public class BonusNumber {
         NumberValidator.validateInRange(number, Constants.LOTTO_MIN_NUMBER, Constants.LOTTO_MAX_NUMBER);
 
         if (winningNumbers.numbers().contains(number)) {
-            throw new IllegalArgumentException("[ERROR] 당첨번호와 중복된 보너스번호 입니다.");
+            throw new IllegalArgumentException(DUPLICATE_WITH_WINNING_NUMBER.getMessage());
         }
         return new BonusNumber(number);
     }
