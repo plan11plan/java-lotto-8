@@ -8,7 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ProfitCalculatorTest {
-    private final ProfitCalculator calculator = new ProfitCalculator(new LotteryRankingAlgorithm());
+    private final ProfitCalculator calculator = new ProfitCalculator(
+            new LotteryRankingAlgorithm(new EnumRankingDecisionStrategy()));
 
     @DisplayName("등수별 당첨 개수를 집계한다")
     @Test

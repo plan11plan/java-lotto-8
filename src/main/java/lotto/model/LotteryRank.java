@@ -1,5 +1,7 @@
 package lotto.model;
 
+import java.util.Arrays;
+
 public enum LotteryRank {
     FIRST(6, false, 2_000_000_000),
     SECOND(5, true, 30_000_000),
@@ -17,6 +19,14 @@ public enum LotteryRank {
         this.matchedCount = matchedCount;
         this.bonusNumber = bonusNumber;
         this.prizeMoney = prizeMoney;
+    }
+
+    public static LotteryRank from(int matchedCount, boolean bonusMatched) {
+        return Arrays.stream(values())
+                .filter(rank -> rank.matchedCount == matchedCount)
+                .filter(rank -> !rank.bonusNumber || bonusMatched)
+                .findFirst()
+                .orElse(NONE);
     }
 
     public int getMatchedCount() {

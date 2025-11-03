@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LotteryRankingAlgorithmTest {
-    private final LotteryRankingAlgorithm algorithm = new LotteryRankingAlgorithm();
+    private final LotteryRankingAlgorithm algorithm = new LotteryRankingAlgorithm(new EnumRankingDecisionStrategy());
 
     @DisplayName("6개 일치 -> 1등")
     @Test

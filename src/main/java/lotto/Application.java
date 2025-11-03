@@ -3,9 +3,13 @@ package lotto;
 import lotto.controller.LotteryGameApplication;
 import lotto.controller.LottoPurchaseController;
 import lotto.controller.WinningResultController;
+import lotto.model.EnumRankingDecisionStrategy;
+import lotto.model.IfElseRankingDecisionStrategy;
 import lotto.model.LotteryMachine;
 import lotto.model.LotteryRankingAlgorithm;
 import lotto.model.ProfitCalculator;
+import lotto.model.RankingDecisionStrategy;
+import lotto.model.SwitchRankingDecisionStrategy;
 import lotto.model.WoowaLottoNumberGenerator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -22,10 +26,14 @@ public class Application {
     }
 
     private static WinningResultController createWinningController(InputView inputView, OutputView outputView) {
+        RankingDecisionStrategy ifElseStrategy = new IfElseRankingDecisionStrategy();
+        RankingDecisionStrategy switchStrategy = new SwitchRankingDecisionStrategy();
+        RankingDecisionStrategy enumStrategy = new EnumRankingDecisionStrategy();
+
         return new WinningResultController(
                 inputView,
                 outputView,
-                new ProfitCalculator(new LotteryRankingAlgorithm())
+                new ProfitCalculator(new LotteryRankingAlgorithm(enumStrategy))
         );
     }
 
